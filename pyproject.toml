@@ -8,6 +8,8 @@ authors = ["ash2shukla"]
 python = "^3.8"
 manim = "^0.9.0"
 streamlit = "^0.87.0"
+pkg-config = "*"
+libglib2.0-dev = "*"
 
 [tool.poetry.dev-dependencies]
 
