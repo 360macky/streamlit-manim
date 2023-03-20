@@ -20,7 +20,7 @@ if st.button("Generate animation", type="primary"):
 
     openai.api_key = openai_api_key
 
-    response = openai.Completion.create(
+    response = openai.ChatCompletion.create(
         engine="gpt-3.5-turbo",
         prompt=[{"role": "system", "content": "You are intelligent."},
                 {"role": "user", "content": f"What is 2+2?"}],
