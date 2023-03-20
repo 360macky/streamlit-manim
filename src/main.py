@@ -21,7 +21,7 @@ if st.button("Generate animation", type="primary"):
     openai.api_key = openai_api_key
 
     response = openai.ChatCompletion.create(
-        engine="gpt-3.5-turbo",
+        model="gpt-3.5-turbo",
         messages=[{"role": "system", "content": "You are intelligent."},
                 {"role": "user", "content": f"What is 2+2?"}],
         max_tokens=200
