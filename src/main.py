@@ -17,9 +17,7 @@ st.code(code_snippet, language="python")
 
 class GeneratedScene(Scene):
     def construct(self):
-        circle = Circle()
-        circle.set_fill("#FF0000", opacity=opacity)
-        self.play(Create(circle))
+        eval(code_snippet)
 
 
 if st.button("Render"):
