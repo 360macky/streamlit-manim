@@ -7,7 +7,7 @@ authors = ["ash2shukla"]
 [tool.poetry.dependencies]
 python = "^3.8"
 manim = "^0.9.0"
-streamlit = "^0.87.0"
+streamlit = "^1.15.0"
 protobuf = "^3.20.0"
 
 [tool.poetry.dev-dependencies]
