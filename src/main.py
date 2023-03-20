@@ -20,7 +20,7 @@ if user_wants_code:
   is_code_edition_enabled = st.button("Edit code")
 
   if is_code_edition_enabled:
-    code_input = st.text_area("Write your animation idea here", value=code_snippet, type="secondary")
+    code_input = st.text_area("Write your animation idea here", value=code_snippet)
   else:
     st.code(code_snippet, language="python")
 
@@ -29,7 +29,7 @@ class GeneratedScene(Scene):
         exec(code_input)
 
 
-if st.button("Render", type="primary"):
+if st.button("Render"):
     GeneratedScene().render()
     st.video("media/videos/1080p60.0/GeneratedScene.mp4")
 
