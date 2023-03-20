@@ -1,8 +1,8 @@
+import streamlit as st
 from manim.mobject.geometry import Circle
 from manim.animation.creation import Create
 from manim.scene.scene import Scene
 from manim.utils.color import Colors
-import streamlit as st
 
 st.title("Manim")
 st.write("This is a test of Manim in Streamlit")
@@ -19,12 +19,5 @@ class SquareToCircle(Scene):
 
 if st.button("Render"):
     SquareToCircle().render()
-    # Show /app/streamlit-manim/media/videos/1080p60.0/SquareToCircle.mp4
     st.video("media/videos/1080p60.0/SquareToCircle.mp4")
-
-# SquareToCircle().render()
-
-# Show a ls of all the available files
-
-# st.video('/app/media/videos/1080p60.0/SquareToCircle.mp4')
 
