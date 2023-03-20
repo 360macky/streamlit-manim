@@ -1,6 +1,5 @@
 import streamlit as st
 from manim import *
-from manim.utils.color import Colors
 
 st.title("Manim")
 st.write("This is a test of Manim in Streamlit")
