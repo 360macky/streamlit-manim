@@ -13,9 +13,12 @@ class SquareToCircle(Scene):
         circle.set_fill(color, opacity=opacity)
         self.play(Create(circle))
 
-SquareToCircle().render()
+if st.button("Render"):
+    SquareToCircle().render()
 
-st.write("Video path:", scene.renderer.file_writer.movie_file_path)
+# SquareToCircle().render()
+
+# Show a ls of all the available files
 
 # st.video('/app/media/videos/1080p60.0/SquareToCircle.mp4')
 
