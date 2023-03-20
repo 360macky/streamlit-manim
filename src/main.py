@@ -15,9 +15,6 @@ self.play(Create(circle))
 
 st.code(code_snippet, language="python")
 
-with st.sidebar:
-    st.info("This is the sidebar")
-
 class GeneratedScene(Scene):
     def construct(self):
         circle = Circle()
