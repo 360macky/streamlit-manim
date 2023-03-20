@@ -15,6 +15,8 @@ class SquareToCircle(Scene):
 
 if st.button("Render"):
     SquareToCircle().render()
+    # Show /app/streamlit-manim/media/videos/1080p60.0/SquareToCircle.mp4
+    st.video("media/videos/1080p60.0/SquareToCircle.mp4")
 
 # SquareToCircle().render()
 
