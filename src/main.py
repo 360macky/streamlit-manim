@@ -1,6 +1,7 @@
 import streamlit as st
 import openai
 from manim import *
+import re
 
 st.title("Manim")
 st.write("This is a test of Manim in Streamlit")
@@ -16,6 +17,16 @@ openai_api_key = st.text_input(
     "Write your OpenAI API Key", value="", type="password")
 code_input = st.text_area("Write your animation idea here", value=code_snippet)
 
+
+def extract_construct_content(source_code):
+    pattern = r"def construct\(self\):([\s\S]+?)\n\s*(?=[^ \t])"
+    match = re.search(pattern, source_code)
+    if match:
+        return match.group(1)
+    else:
+        return None
+
+
 if st.button("Generate animation", type="primary"):
 
     openai.api_key = openai_api_key
@@ -23,13 +34,17 @@ if st.button("Generate animation", type="primary"):
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[{"role": "system", "content": "You only write Manim scripts for animations in Python. Generate code, not text. Do not explain code. Do not use other library than Manim. At the end use 'self.play' ```from manim import *\n\nclass GeneratedScene(Scene):```\n  def construct(self):\n  # Write here"},
-                {"role": "user", "content": f"Animation Request: {prompt}"}],
+                {"role": "user", "content": f"Animation Request: {prompt}. Only code."}],
         max_tokens=200
     )
 
-    code_response = response.choices[0].message.content
+    code_response = extract_construct_content(response.choices[0].message.content)
 
-    logger.info(f"Code response: {code_response}")
+    if code_response is None:
+        logger.error("We could not extract the code from the response.")
+        logger.info(f"Response: {response.choices[0].message.content}")
+    else:
+        logger.info(f"Awesome. Code response: {code_response}")
 
     class GeneratedScene(Scene):
         def construct(self):
