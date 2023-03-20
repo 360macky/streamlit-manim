@@ -17,7 +17,7 @@ st.code(code_snippet, language="python")
 
 class GeneratedScene(Scene):
     def construct(self):
-        eval(code_snippet)
+        exec(code_snippet)
 
 
 if st.button("Render"):
