@@ -1,4 +1,5 @@
 import streamlit as st
+import openai
 from manim import *
 
 st.title("Manim")
@@ -13,9 +14,6 @@ self.play(Create(circle))
 prompt = st.text_area("Write your animation idea here")
 code_input = st.text_area("Write your animation idea here", value=code_snippet)
 openai_key = st.text_input("Write your OpenAI API Key", value="", type="password")
-
-
-# st.code(code_snippet, language="python")
 
 class GeneratedScene(Scene):
     def construct(self):
