@@ -4,11 +4,12 @@ from manim.scene.scene import Scene
 from manim.utils.color import Colors
 import streamlit as st
 
-color = st.text_input("Give Hex Fill color for circle", value=Colors.blue_e.value)
-opacity = st.slider("Choose opacity", min_value=0.0, max_value=1.0, value=0.45)
-
 st.title("Manim")
 st.write("This is a test of Manim in Streamlit")
+
+prompt = st.textarea("Write your animation idea here")
+color = st.text_input("Give Hex Fill color for circle", value=Colors.blue_e.value)
+opacity = st.slider("Choose opacity", min_value=0.0, max_value=1.0, value=0.45)
 
 class SquareToCircle(Scene):
     def construct(self):
