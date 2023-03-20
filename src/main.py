@@ -22,7 +22,7 @@ class GeneratedScene(Scene):
         exec(code_input)
 
 
-if st.button("Render"):
+if st.button("Render", type="primary"):
     GeneratedScene().render()
     st.video("media/videos/1080p60.0/GeneratedScene.mp4")
 
