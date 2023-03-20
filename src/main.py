@@ -22,8 +22,9 @@ if st.button("Generate animation", type="primary"):
 
     response = openai.ChatCompletion.create(
         engine="gpt-3.5-turbo",
-        prompt=[{"role": "system", "content": "You are intelligent."},
+        messages=[{"role": "system", "content": "You are intelligent."},
                 {"role": "user", "content": f"What is 2+2?"}],
+        max_tokens=200
     )
 
     code_response = response["choices"][0]["text"]
