@@ -11,7 +11,7 @@ circle.set_fill("#FF0000", opacity=0.5)
 self.play(Create(circle))
 '''
 
-prompt = st.text_area("Write your animation idea here")
+prompt = st.text_area("Write your animation idea here", "Draw a blue circle")
 openai_api_key = st.text_input(
     "Write your OpenAI API Key", value="", type="password")
 code_input = st.text_area("Write your animation idea here", value=code_snippet)
@@ -22,8 +22,8 @@ if st.button("Generate animation", type="primary"):
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
-        messages=[{"role": "system", "content": "You are intelligent."},
-                {"role": "user", "content": f"What is 2+2?"}],
+        messages=[{"role": "system", "content": "You write only Manim scripts for animations in Python. Generate code, not text. Do not explain code. Do not use other library than Manim. At the end use 'self.play'"},
+                {"role": "user", "content": f"Animation Request: {prompt}"}],
         max_tokens=200
     )
 
