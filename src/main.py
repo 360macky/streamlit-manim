@@ -6,7 +6,7 @@ import re
 st.title("Manim")
 st.write("This is a test of Manim in Streamlit")
 
-code_snippet = '''
+code_response = '''
 circle = Circle()
 circle.set_fill("#FF0000", opacity=0.5)
 self.play(Create(circle))
@@ -15,7 +15,7 @@ self.play(Create(circle))
 prompt = st.text_area("Write your animation idea here", "Draw a blue circle")
 openai_api_key = st.text_input(
     "Write your OpenAI API Key", value="", type="password")
-code_input = st.text_area("Write your animation idea here", value=code_snippet)
+code_input = st.text_area("Write your animation idea here", value=code_response)
 
 
 def extract_construct_content(source_code):
@@ -26,8 +26,10 @@ def extract_construct_content(source_code):
     else:
         return None
 
+generates_only_code = st.button("Generate only code :computer:", type="secondary")
+generates_animation = st.button("Generate animation :magic_wand:", type="primary")
 
-if st.button("Generate animation", type="primary"):
+if generates_animation or generates_only_code:
 
     openai.api_key = openai_api_key
 
@@ -45,9 +47,11 @@ if st.button("Generate animation", type="primary"):
         logger.info(f"Response: {response.choices[0].message.content}")
     else:
         logger.info(f"Awesome. Code response: {code_response}")
+        code_input = code_response
 
-    class GeneratedScene(Scene):
-        def construct(self):
-            exec(code_input)
-    GeneratedScene().render()
-    st.video("media/videos/1080p60.0/GeneratedScene.mp4")
+    if generates_animation:
+        class GeneratedScene(Scene):
+            def construct(self):
+                exec(code_response)
+        GeneratedScene().render()
+        st.video("media/videos/1080p60.0/GeneratedScene.mp4")
