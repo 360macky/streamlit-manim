@@ -6,17 +6,21 @@ st.write("This is a test of Manim in Streamlit")
 
 code_snippet = '''
 circle = Circle()
-circle.set_fill("#FF0000", opacity=opacity)
+circle.set_fill("#FF0000", opacity=0.5)
 self.play(Create(circle))
 '''
 
 prompt = st.text_area("Write your animation idea here")
-code_input = st.text_area("Write your animation idea here", value=code_snippet)
-opacity = st.slider("Choose opacity", min_value=0.0, max_value=1.0, value=0.45)
 openai_key = st.text_input("Write your OpenAI API Key", value="", type="password")
+user_wants_code = st.checkbox("Check code generated")
 
+if user_wants_code:
+  is_code_edition_enabled = st.button("Edit code")
 
-st.code(code_snippet, language="python")
+  if is_code_edition_enabled:
+    code_input = st.text_area("Write your animation idea here", value=code_snippet)
+  else:
+    st.code(code_snippet, language="python")
 
 class GeneratedScene(Scene):
     def construct(self):
