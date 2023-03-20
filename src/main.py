@@ -2,7 +2,6 @@ import streamlit as st
 import openai
 from manim import *
 import re
-from streamlit_ace import st_ace
 
 st.title("Manim")
 st.write("This is a test of Manim in Streamlit")
@@ -13,12 +12,12 @@ circle.set_fill("#FF0000", opacity=0.5)
 self.play(Create(circle))
 '''
 
+
 prompt = st.text_area("Write your animation idea here", "Draw a blue circle")
 openai_api_key = st.text_input(
     "Write your OpenAI API Key", value="", type="password")
+code_input = st.text_area("Write your animation idea here", value=code_response)
 
-st.write("Write your animation idea here: ")
-code_input = st_ace(code_response, language="python")
 
 def extract_construct_content(source_code):
     pattern = r"def construct\(self\):([\s\S]+?)\n\s*(?=[^ \t])"
