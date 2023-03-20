@@ -18,7 +18,7 @@ st.code(code_snippet, language="python")
 with st.sidebar:
     st.info("This is the sidebar")
 
-class SquareToCircle(Scene):
+class GeneratedScene(Scene):
     def construct(self):
         circle = Circle()
         circle.set_fill("#FF0000", opacity=opacity)
@@ -27,4 +27,4 @@ class SquareToCircle(Scene):
 
 if st.button("Render"):
     SquareToCircle().render()
-    st.video("media/videos/1080p60.0/SquareToCircle.mp4")
+    st.video("media/videos/1080p60.0/GeneratedScene.mp4")
