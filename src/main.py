@@ -14,11 +14,13 @@ prompt = st.text_area("Write your animation idea here")
 openai_key = st.text_input("Write your OpenAI API Key", value="", type="password")
 user_wants_code = st.checkbox("Check code generated")
 
+code_input = ""
+
 if user_wants_code:
   is_code_edition_enabled = st.button("Edit code")
 
   if is_code_edition_enabled:
-    code_input = st.text_area("Write your animation idea here", value=code_snippet)
+    code_input = st.text_area("Write your animation idea here", value=code_snippet, type="secondary")
   else:
     st.code(code_snippet, language="python")
 
