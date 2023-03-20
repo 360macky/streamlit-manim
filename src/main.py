@@ -15,4 +15,7 @@ class SquareToCircle(Scene):
 
 SquareToCircle().render()
 
-st.video('/app/media/videos/1080p60.0/SquareToCircle.mp4')
+st.write("Video path:", scene.renderer.file_writer.movie_file_path)
+
+# st.video('/app/media/videos/1080p60.0/SquareToCircle.mp4')
+
