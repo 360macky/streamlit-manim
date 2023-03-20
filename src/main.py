@@ -11,18 +11,11 @@ self.play(Create(circle))
 '''
 
 prompt = st.text_area("Write your animation idea here")
+code_input = st.text_area("Write your animation idea here", value=code_snippet)
 openai_key = st.text_input("Write your OpenAI API Key", value="", type="password")
-user_wants_code = st.checkbox("Check code generated")
 
-code_input = ""
 
-if user_wants_code:
-  is_code_edition_enabled = st.button("Edit code")
-
-  if is_code_edition_enabled:
-    code_input = st.text_area("Write your animation idea here", value=code_snippet)
-  else:
-    st.code(code_snippet, language="python")
+st.code(code_snippet, language="python")
 
 class GeneratedScene(Scene):
     def construct(self):
