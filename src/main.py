@@ -27,7 +27,7 @@ if st.button("Generate animation", type="primary"):
         max_tokens=200
     )
 
-    code_response = response["choices"][0]["text"]
+    code_response = response
 
     logger.info(f"Code response: {code_response}")
 
