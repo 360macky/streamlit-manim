@@ -15,14 +15,14 @@ code_input = st.text_area("Write your animation idea here", value=code_snippet)
 openai_key = st.text_input("Write your OpenAI API Key", value="", type="password")
 
 
-st.code(code_snippet, language="python")
+# st.code(code_snippet, language="python")
 
 class GeneratedScene(Scene):
     def construct(self):
         exec(code_input)
 
 
-if st.button("Render"):
+if st.button("Render", type='primary'):
     GeneratedScene().render()
     st.video("media/videos/1080p60.0/GeneratedScene.mp4")
 
